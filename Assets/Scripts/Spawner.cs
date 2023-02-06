@@ -11,17 +11,17 @@ public class Spawner : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(CorooutineSpawner());
+        StartCoroutine(Generate());
     }
 
-    private IEnumerator CorooutineSpawner()
+    private IEnumerator Generate()
     {
         WaitForSeconds waitForSeconds = new WaitForSeconds(_timeSpawn);
         int minSpawnPosition = 0;
 
         while (_isSpawningEnemies)
         {
-            Enemy enemy = Instantiate(_enemyPrefab, _spawnPoints[Random.Range(minSpawnPosition, _spawnPoints.Length)]);
+            Enemy spawnedEnemy = Instantiate(_enemyPrefab, _spawnPoints[Random.Range(minSpawnPosition, _spawnPoints.Length)]);
 
             yield return waitForSeconds;
         }
